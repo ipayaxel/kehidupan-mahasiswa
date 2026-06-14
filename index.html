@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KAMPUS KITA — Majalah Online Mahasiswa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF7F2;
+  --bg-card: #FFFFFF;
+  --ink: #1A1612;
+  --ink-mid: #5C5248;
+  --ink-light: #9C9088;
+  --ed1-accent: #D4542A;
+  --ed1-bg: #FFF3EE;
+  --ed2-accent: #1B5E8A;
+  --ed2-bg: #EEF5FB;
+  --rule: #E8E0D5;
+  --nav-h: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* ===== PROGRESS BAR ===== */
+#pbar {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--ed1-accent), var(--ed2-accent));
+  z-index: 9999; width: 0; transition: width 0.15s;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: sticky; top: 0; height: var(--nav-h);
+  background: rgba(250,247,242,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  z-index: 900;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.nav-logo span { color: var(--ed1-accent); }
+
+.nav-links {
+  display: flex; gap: 28px; list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-mid);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+
+.theme-toggle {
+  background: none; border: 1px solid var(--rule);
+  border-radius: 20px; padding: 5px 14px;
+  cursor: pointer; font-size: 0.78rem;
+  color: var(--ink-mid); font-family: 'DM Sans', sans-serif;
+  font-weight: 500; transition: all 0.2s;
+}
+.theme-toggle:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* ===== HERO ===== */
+.hero {
+  max-width: 1100px; margin: 0 auto;
+  padding: 80px 32px 60px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.08;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.hero-title em {
+  font-style: normal;
+  -webkit-text-stroke: 1.5px var(--ed1-accent);
+  color: transparent;
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--ink-mid);
+  max-width: 420px;
+  margin-bottom: 32px;
+}
+
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--ink); color: var(--bg);
+  text-decoration: none;
+  padding: 13px 26px;
+  border-radius: 4px;
+  font-weight: 600; font-size: 0.9rem;
+  transition: background 0.2s;
+}
+.hero-cta:hover { background: var(--ed1-accent); }
+
+.hero-visual {
+  position: relative;
+}
+
+.edition-stack {
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.ed-card-mini {
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: flex; align-items: center; gap: 16px;
+  border: 1px solid var(--rule);
+  background: var(--bg-card);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.ed-card-mini:hover { transform: translateX(6px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+.ed-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ed-num.one { color: var(--ed1-accent); }
+.ed-num.two { color: var(--ed2-accent); }
+
+.ed-info {}
+.ed-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 3px;
+}
+.ed-info h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.3; }
+
+/* ===== SECTION HEADER ===== */
+.section-header {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 32px;
+  display: flex; align-items: center; gap: 20px;
+  margin-bottom: 36px;
+}
+
+.section-rule {
+  flex: 1; height: 1px; background: var(--rule);
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  white-space: nowrap;
+}
+
+/* ===== TEAM REDAKSI ===== */
+.team-section {
+  padding: 80px 32px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.team-inner { max-width: 900px; margin: 0 auto; }
+
+.team-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.team-subheading {
+  color: rgba(250,247,242,0.5);
+  font-size: 0.9rem;
+  margin-bottom: 48px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.team-member {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.team-member:hover { border-color: rgba(255,255,255,0.3); }
+
+.member-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.member-role.chief { color: var(--ed1-accent); }
+.member-role.editor { color: var(--ed2-accent); }
+.member-role.author { color: #8BC34A; }
+
+.member-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.member-nim {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: rgba(250,247,242,0.4);
+}
+
+.member-accent {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+/* ===== EDITION SECTIONS ===== */
+.edition-section { padding: 80px 0; }
+
+.edition-section:nth-child(odd) { background: var(--ed1-bg); }
+.edition-section:nth-child(even) { background: var(--ed2-bg); }
+
+.edition-header {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 32px 52px;
+}
+
+.edition-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border-radius: 4px;
+  padding: 5px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.edition-badge.ed1 { background: var(--ed1-accent); color: #fff; }
+.edition-badge.ed2 { background: var(--ed2-accent); color: #fff; }
+
+.edition-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.edition-tagline {
+  font-size: 1rem;
+  color: var(--ink-mid);
+}
+
+/* ===== ARTICLES GRID ===== */
+.articles-grid {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.article-card {
+  background: var(--bg-card);
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.article-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
+
+.article-card-accent {
+  height: 5px;
+  flex-shrink: 0;
+}
+
+.article-card-body { padding: 32px; flex: 1; display: flex; flex-direction: column; }
+
+.article-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.article-type.ed1 { color: var(--ed1-accent); }
+.article-type.ed2 { color: var(--ed2-accent); }
+
+.article-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.article-lead {
+  font-size: 0.92rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 24px;
+}
+
+.read-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none; cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.2s;
+}
+
+.read-btn.ed1 { background: var(--ed1-accent); color: #fff; }
+.read-btn.ed1:hover { background: #B8431E; }
+.read-btn.ed2 { background: var(--ed2-accent); color: #fff; }
+.read-btn.ed2:hover { background: #154A72; }
+
+/* ===== FULL ARTICLE OVERLAY ===== */
+.article-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(26,22,18,0.85);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 32px 20px;
+  overflow-y: auto;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.article-overlay.open { opacity: 1; pointer-events: all; }
+
+.article-modal {
+  background: var(--bg);
+  border-radius: 12px;
+  max-width: 760px; width: 100%;
+  padding: 0;
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+
+.article-overlay.open .article-modal { transform: translateY(0); }
+
+.modal-top {
+  padding: 36px 48px 28px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.modal-close {
+  display: flex; justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  background: none; border: 1px solid var(--rule);
+  border-radius: 4px; cursor: pointer;
+  padding: 6px 14px;
+  font-size: 0.8rem; color: var(--ink-mid);
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.2s;
+}
+.close-btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.modal-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.modal-eyebrow.ed1 { color: var(--ed1-accent); }
+.modal-eyebrow.ed2 { color: var(--ed2-accent); }
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem; font-weight: 900;
+  line-height: 1.2; color: var(--ink);
+}
+
+.modal-body { padding: 36px 48px 48px; }
+
+.modal-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--ink);
+  margin: 28px 0 12px;
+}
+
+.modal-body p {
+  font-size: 0.96rem;
+  color: var(--ink-mid);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.modal-body .highlight-box {
+  border-left: 3px solid var(--ed1-accent);
+  padding: 16px 20px;
+  background: var(--ed1-bg);
+  border-radius: 0 6px 6px 0;
+  margin: 24px 0;
+  font-size: 0.93rem;
+  color: var(--ink-mid);
+  font-style: italic;
+}
+
+.modal-body .highlight-box.ed2 {
+  border-left-color: var(--ed2-accent);
+  background: var(--ed2-bg);
+}
+
+.modal-refs {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.modal-refs h4 {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-light);
+  margin-bottom: 14px;
+}
+
+.modal-refs p {
+  font-size: 0.82rem;
+  color: var(--ink-light);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+/* ===== FEATURE SECTION ===== */
+.feature-section {
+  padding: 80px 0;
+  background: var(--bg-card);
+}
+
+.feature-inner {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 32px;
+}
+
+.feature-header { margin-bottom: 48px; }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.feature-main {}
+
+.feature-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-light);
+  margin-bottom: 12px;
+}
+
+.feature-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900;
+  line-height: 1.2; color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.feature-body p {
+  font-size: 0.95rem; color: var(--ink-mid);
+  line-height: 1.8; margin-bottom: 16px;
+}
+
+.feature-timeline {
+  background: var(--bg); border-radius: 8px;
+  border: 1px solid var(--rule);
+  padding: 24px;
+}
+
+.timeline-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-light);
+  margin-bottom: 20px;
+}
+
+.timeline-item {
+  display: flex; gap: 14px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px; top: 34px;
+  width: 1px; height: calc(100% - 14px);
+  background: var(--rule);
+}
+
+.t-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem; color: var(--ed1-accent);
+  white-space: nowrap; flex-shrink: 0;
+  width: 32px;
+  margin-top: 3px;
+}
+
+.t-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ed1-accent);
+  flex-shrink: 0; margin-top: 6px;
+}
+
+.t-text {
+  font-size: 0.83rem; color: var(--ink-mid);
+  line-height: 1.5;
+}
+
+/* ===== OPINI SECTION ===== */
+.opini-section {
+  background: var(--ink);
+  padding: 80px 0;
+  color: var(--bg);
+}
+
+.opini-inner {
+  max-width: 900px; margin: 0 auto;
+  padding: 0 32px;
+}
+
+.opini-header {
+  display: flex; align-items: center;
+  gap: 16px; margin-bottom: 40px;
+}
+
+.opini-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-light);
+}
+
+.opini-rule { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+
+.opini-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+  font-weight: 700; line-height: 1.25;
+  margin-bottom: 28px;
+  color: #fff;
+}
+
+.opini-quote em {
+  font-style: normal;
+  color: var(--ed1-accent);
+}
+
+.opini-body p {
+  font-size: 0.95rem;
+  color: rgba(250,247,242,0.65);
+  line-height: 1.8; margin-bottom: 14px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #111;
+  color: rgba(255,255,255,0.5);
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: #fff; margin-bottom: 8px;
+}
+
+.footer-logo span { color: var(--ed1-accent); }
+
+.footer-info {
+  font-size: 0.8rem;
+  margin-bottom: 24px;
+}
+
+.footer-credits {
+  font-size: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  --bg: #131110;
+  --bg-card: #1C1916;
+  --ink: #FAF7F2;
+  --ink-mid: #B8AEA4;
+  --ink-light: #7A726A;
+  --rule: #2E2924;
+  --ed1-bg: #2A1A12;
+  --ed2-bg: #101E2A;
+}
+
+/* ===== MOBILE NAV ===== */
+.hamburger {
+  display: none;
+  background: none; border: 1px solid var(--rule);
+  border-radius: 4px; padding: 6px 10px;
+  cursor: pointer; font-size: 1rem; color: var(--ink);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed; inset: 0; top: var(--nav-h);
+  background: var(--bg);
+  z-index: 800;
+  flex-direction: column;
+  padding: 32px;
+  gap: 24px;
+}
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 700;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 20px;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--ed1-accent); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 48px 20px 40px;
+    gap: 40px;
+  }
+
+  .articles-grid { grid-template-columns: 1fr; padding: 0 20px; }
+  .edition-header { padding: 0 20px 40px; }
+  .section-header { padding: 0 20px; }
+  .team-grid { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .feature-inner { padding: 0 20px; }
+  .opini-inner { padding: 0 20px; }
+  .modal-top { padding: 24px 24px 20px; }
+  .modal-body { padding: 24px 24px 36px; }
+  .modal-title { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="pbar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KAMPUS<span>•</span>KITA</div>
+  <ul class="nav-links">
+    <li><a href="#edisi-1">Edisi 1</a></li>
+    <li><a href="#edisi-2">Edisi 2</a></li>
+    <li><a href="#feature">Feature</a></li>
+    <li><a href="#opini">Opini</a></li>
+    <li><a href="#redaksi">Redaksi</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleDark()">☾ Gelap</button>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#edisi-1" onclick="toggleMenu()">Edisi 1 — Survival Guide</a>
+  <a href="#edisi-2" onclick="toggleMenu()">Edisi 2 — Smart Campus</a>
+  <a href="#feature" onclick="toggleMenu()">Feature</a>
+  <a href="#opini" onclick="toggleMenu()">Opini</a>
+  <a href="#redaksi" onclick="toggleMenu()">Redaksi</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Majalah Online · Kelompok 3 · 2B Teknik Informatika · UHAMKA</p>
+    <h1 class="hero-title">Dua <em>Edisi,</em> Satu Visi Kampus</h1>
+    <p class="hero-desc">Dari panduan bertahan hidup di kampus hingga transformasi digital Smart Campus — semua ada di sini untuk mahasiswa modern.</p>
+    <a href="#edisi-1" class="hero-cta">Mulai Membaca →</a>
+  </div>
+  <div class="hero-visual">
+    <div class="edition-stack">
+      <a href="#edisi-1" class="ed-card-mini">
+        <div class="ed-num one">01</div>
+        <div class="ed-info">
+          <div class="ed-label">Edisi Pertama</div>
+          <h3>Survival Guide: Sukses di Dunia Kampus</h3>
+        </div>
+      </a>
+      <a href="#edisi-2" class="ed-card-mini">
+        <div class="ed-num two">02</div>
+        <div class="ed-info">
+          <div class="ed-label">Edisi Kedua</div>
+          <h3>Smart Campus: Masa Depan Pelayanan Mahasiswa</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-header">
+  <div class="section-rule"></div>
+  <div class="section-label">Pilih Edisi Anda</div>
+  <div class="section-rule"></div>
+</div>
+
+<!-- EDISI 1 -->
+<section class="edition-section" id="edisi-1">
+  <div class="edition-header">
+    <div class="edition-badge ed1">📘 Edisi 01 — 2025</div>
+    <h2 class="edition-title">Survival Guide:<br>Sukses di Dunia Kampus</h2>
+    <p class="edition-tagline">Panduan ringan dan bermakna untuk mahasiswa yang baru memasuki dunia perkuliahan.</p>
+  </div>
+
+  <div class="articles-grid">
+    <!-- Artikel 1 Edisi 1 -->
+    <div class="article-card">
+      <div class="article-card-accent" style="background: var(--ed1-accent);"></div>
+      <div class="article-card-body">
+        <div class="article-type ed1">Feature · Dunia Baru Bernama Kampus</div>
+        <h3 class="article-title">Dunia Baru Bernama Kampus: Kebebasan yang Penuh Tanggung Jawab</h3>
+        <p class="article-lead">Memasuki kampus bukan sekadar pindah sekolah — ini adalah awal dari fase pembentukan diri. Mahasiswa baru menghadapi culture shock: jadwal bebas tapi tuntutan kemandirian jauh lebih tinggi.</p>
+        <button class="read-btn ed1" onclick="bukaArtikel('a1e1')">Baca Artikel →</button>
+      </div>
+    </div>
+
+    <!-- Artikel 2 Edisi 1 -->
+    <div class="article-card">
+      <div class="article-card-accent" style="background: #E09B2D;"></div>
+      <div class="article-card-body">
+        <div class="article-type ed1">Adaptasi & Tips · Anti-Stress</div>
+        <h3 class="article-title">Mahasiswa Baru: Adaptasi dan Tips Anti-Stress di Kampus</h3>
+        <p class="article-lead">Masa transisi dari siswa ke mahasiswa adalah fase paling menantang. Lingkungan baru, sistem belajar mandiri, dan tekanan akademik memerlukan strategi adaptasi yang tepat agar tidak tenggelam dalam stress.</p>
+        <button class="read-btn ed1" onclick="bukaArtikel('a2e1')">Baca Artikel →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDISI 2 -->
+<section class="edition-section" id="edisi-2">
+  <div class="edition-header">
+    <div class="edition-badge ed2">🔬 Edisi 02 — 2025</div>
+    <h2 class="edition-title">Smart Campus:<br>Masa Depan Pelayanan Mahasiswa</h2>
+    <p class="edition-tagline">Transformasi digital kampus dalam meningkatkan kualitas layanan akademik dan pengalaman belajar modern.</p>
+  </div>
+
+  <div class="articles-grid">
+    <!-- Artikel 1 Edisi 2 -->
+    <div class="article-card">
+      <div class="article-card-accent" style="background: var(--ed2-accent);"></div>
+      <div class="article-card-body">
+        <div class="article-type ed2">Artikel Utama · Transformasi Digital</div>
+        <h3 class="article-title">Smart Campus sebagai Transformasi Digital dalam Pelayanan Mahasiswa</h3>
+        <p class="article-lead">Dengan integrasi IoT, kecerdasan buatan, dan cloud computing, Smart Campus hadir sebagai solusi modern untuk meningkatkan kualitas layanan akademik maupun non-akademik di era revolusi industri 4.0.</p>
+        <button class="read-btn ed2" onclick="bukaArtikel('a1e2')">Baca Artikel →</button>
+      </div>
+    </div>
+
+    <!-- Artikel 2 Edisi 2 -->
+    <div class="article-card">
+      <div class="article-card-accent" style="background: #0D9488;"></div>
+      <div class="article-card-body">
+        <div class="article-type ed2">Artikel Utama · Pengalaman Belajar</div>
+        <h3 class="article-title">Peran Smart Campus dalam Menciptakan Pengalaman Belajar Modern</h3>
+        <p class="article-lead">Sistem LMS, analisis data akademik, chatbot 24 jam, dan digitalisasi administrasi mengubah cara mahasiswa belajar dan berinteraksi dengan kampus — lebih fleksibel, efisien, dan ramah lingkungan.</p>
+        <button class="read-btn ed2" onclick="bukaArtikel('a2e2')">Baca Artikel →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE SECTION -->
+<section class="feature-section" id="feature">
+  <div class="feature-inner">
+    <div class="section-header" style="padding: 0; margin-bottom: 48px;">
+      <div class="section-rule"></div>
+      <div class="section-label">Feature Utama</div>
+      <div class="section-rule"></div>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-main">
+        <div class="feature-tag">Sehari Bersama Mahasiswa Era Smart Campus</div>
+        <h2 class="feature-title">Satu Hari di Kampus Masa Depan</h2>
+        <div class="feature-body">
+          <p>Pukul 06.30 pagi, Raka — mahasiswa Teknik Informatika — membuka aplikasi kampus di smartphone-nya. Dari satu layar, ia bisa melihat jadwal kuliah, lokasi ruang kelas, hingga notifikasi tugas yang harus dikumpulkan hari ini.</p>
+          <p>Sesampainya di kampus, tak ada antrian tanda tangan absensi. Raka hanya menempelkan kartu mahasiswa digital pada pemindai otomatis. Data kehadiran langsung masuk ke sistem akademik kampus secara real-time.</p>
+          <p>Saat istirahat, ia memesan makanan di kantin menggunakan pembayaran digital yang terhubung dengan kartu mahasiswanya. Setelah itu, ia mengunjungi perpustakaan pintar — akses ribuan buku digital hanya dengan sidik jari.</p>
+          <p>Sore hari, Raka mengikuti kelas daring melalui LMS kampus. Dosen memberikan materi interaktif, kuis, dan forum diskusi online. Teknologi tidak menggantikan pengalaman belajar — justru membuatnya lebih kaya dan fleksibel.</p>
+        </div>
+      </div>
+      <div>
+        <div class="feature-timeline">
+          <div class="timeline-title">Jadwal Raka — Sehari di Smart Campus</div>
+          <div class="timeline-item">
+            <div class="t-time">06.30</div>
+            <div class="t-dot"></div>
+            <div class="t-text">Cek jadwal & notifikasi tugas lewat app kampus</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-time">08.00</div>
+            <div class="t-dot"></div>
+            <div class="t-text">Absensi digital — tap kartu di pintu kelas</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-time">12.00</div>
+            <div class="t-dot"></div>
+            <div class="t-text">Bayar kantin digital & baca e-book di perpus pintar</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-time">14.00</div>
+            <div class="t-dot"></div>
+            <div class="t-text">Kelas hybrid — belajar dari kampus atau dari rumah</div>
+          </div>
+          <div class="timeline-item">
+            <div class="t-time">19.00</div>
+            <div class="t-dot"></div>
+            <div class="t-text">Submit tugas lewat LMS, tanya chatbot akademik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINI SECTION -->
+<section class="opini-section" id="opini">
+  <div class="opini-inner">
+    <div class="opini-header">
+      <div class="opini-label">Rubrik Opini</div>
+      <div class="opini-rule"></div>
+    </div>
+    <p class="opini-quote">Smart Campus bukan lagi <em>pilihan,</em> melainkan sebuah kebutuhan nyata bagi perguruan tinggi modern.</p>
+    <div class="opini-body">
+      <p>Mahasiswa zaman sekarang hidup di era serba digital. Mereka terbiasa menggunakan teknologi untuk berkomunikasi, belajar, hingga mengakses informasi dalam hitungan detik. Jika kampus masih menggunakan sistem pelayanan manual yang lambat, maka mahasiswa akan merasa kesulitan dan kurang nyaman — dua hal yang paling merugikan proses belajar.</p>
+      <p>Penerapan Smart Campus memberikan manfaat nyata: pelayanan lebih cepat, pembelajaran lebih fleksibel, komunikasi antara mahasiswa dengan kampus menjadi lebih efektif. Dan dalam jangka panjang, penggunaan teknologi juga membantu kampus menghemat biaya operasional yang signifikan.</p>
+      <p>Namun, Smart Campus tidak boleh hanya berfokus pada teknologi semata. Kampus harus memperhatikan kesiapan sumber daya manusia dan memastikan pemerataan akses teknologi bagi seluruh mahasiswa — tanpa terkecuali. Dengan pengelolaan yang tepat, Smart Campus bisa menjadi fondasi pendidikan tinggi yang modern, inovatif, dan mampu bersaing di level global.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REDAKSI -->
+<section class="team-section" id="redaksi">
+  <div class="team-inner">
+    <h2 class="team-heading">Susunan Redaksi</h2>
+    <p class="team-subheading">Kelompok 3 (2B) · Teknik Informatika · Universitas Muhammadiyah Prof. Dr. Hamka</p>
+
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="member-role chief">⭐ Chief Editor</div>
+        <div class="member-name">Muhammad Fajar Hari Ruby</div>
+        <div class="member-nim">NIM: 2503015101</div>
+        <div class="member-accent" style="background: var(--ed1-accent);"></div>
+      </div>
+      <div class="team-member">
+        <div class="member-role editor">✏️ Editor</div>
+        <div class="member-name">Firdaus Fathan Syakura</div>
+        <div class="member-nim">NIM: 2503015085</div>
+        <div class="member-accent" style="background: var(--ed2-accent);"></div>
+      </div>
+      <div class="team-member">
+        <div class="member-role author">🖊 Author & Layout Designer</div>
+        <div class="member-name">Savero Alfathir Valerian</div>
+        <div class="member-nim">NIM: 2503015040</div>
+        <div class="member-accent" style="background: #8BC34A;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">KAMPUS<span>•</span>KITA</div>
+  <div class="footer-info">Majalah Online Mahasiswa · Edisi 1 & 2 · 2025</div>
+  <div class="footer-credits">
+    © 2025 Kelompok 3 (2B) Teknik Informatika — Universitas Muhammadiyah Prof. Dr. Hamka<br>
+    Dibuat sebagai tugas akademik Bahasa Indonesia
+  </div>
+</footer>
+
+<!-- ===== ARTICLE OVERLAYS ===== -->
+
+<!-- A1E1: Dunia Baru Bernama Kampus -->
+<div class="article-overlay" id="ov-a1e1">
+  <div class="article-modal">
+    <div class="modal-top">
+      <div class="modal-close"><button class="close-btn" onclick="tutupArtikel('a1e1')">✕ Tutup</button></div>
+      <div class="modal-eyebrow ed1">Feature · Edisi 01 · Savero Alfathir Valerian</div>
+      <h2 class="modal-title">Dunia Baru Bernama Kampus: Kebebasan yang Penuh Tanggung Jawab</h2>
+    </div>
+    <div class="modal-body">
+      <p>Memasuki dunia kampus sering dianggap sebagai awal kebebasan. Mahasiswa tidak lagi terikat aturan ketat seperti di sekolah, memiliki jadwal lebih fleksibel, dan mulai menentukan arah hidup sendiri. Namun, di balik kebebasan tersebut, terdapat tuntutan kemandirian yang jauh lebih besar.</p>
+      <p>Di dunia perkuliahan, mahasiswa dituntut untuk belajar secara mandiri, mengatur waktu sendiri, dan bertanggung jawab atas setiap keputusan akademik maupun non-akademik.</p>
+      <div class="highlight-box">
+        Perubahan ini sering menimbulkan <em>culture shock</em>, terutama bagi mahasiswa baru yang belum terbiasa dengan sistem yang lebih bebas namun penuh tanggung jawab.
+      </div>
+      <h3>Lebih dari Sekadar Belajar Teori</h3>
+      <p>Selain itu, kehidupan kampus juga menjadi fase penting dalam pengembangan diri, baik secara intelektual maupun sosial. Mahasiswa tidak hanya belajar teori, tetapi juga belajar menghadapi realitas kehidupan — bernegosiasi, berkolaborasi, dan membangun identitas diri di tengah keberagaman.</p>
+      <p>Kampus adalah ruang untuk mengenal diri, membangun relasi, serta menghadapi berbagai tantangan baru yang tidak selalu mudah. Melalui proses itulah karakter mahasiswa dibentuk secara nyata.</p>
+      <div class="modal-refs">
+        <h4>Penulis</h4>
+        <p>Savero Alfathir Valerian (2503015040) — Peer Review: Firdaus Fathan Syakura</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- A2E1: Adaptasi & Anti-Stress -->
+<div class="article-overlay" id="ov-a2e1">
+  <div class="article-modal">
+    <div class="modal-top">
+      <div class="modal-close"><button class="close-btn" onclick="tutupArtikel('a2e1')">✕ Tutup</button></div>
+      <div class="modal-eyebrow ed1">Adaptasi · Edisi 01 · M. Hafizh Halim</div>
+      <h2 class="modal-title">Mahasiswa Baru: Adaptasi dan Tips Anti-Stress di Kampus</h2>
+    </div>
+    <div class="modal-body">
+      <p>Masa transisi dari siswa menjadi mahasiswa adalah fase yang menantang. Lingkungan baru, sistem belajar mandiri, dan tuntutan akademik yang meningkat sering memicu stres. Salah satu kunci utama adaptasi adalah manajemen waktu yang baik — dengan pengaturan waktu yang tepat, mahasiswa dapat menghindari stres dan kecemasan karena tugas lebih terorganisir.</p>
+      <h3>Tips Adaptasi yang Bisa Dilakukan</h3>
+      <p>Ada beberapa langkah konkret yang membantu mahasiswa baru beradaptasi dengan lebih cepat: mengenal lingkungan kampus dan fasilitasnya lebih awal, aktif mencari informasi dan bertanya, menjalin pertemanan dengan mahasiswa lain, menyusun jadwal belajar dan aktivitas, serta mengikuti kegiatan organisasi yang sesuai minat.</p>
+      <div class="highlight-box">
+        Menjalin relasi juga menjadi faktor penting. Lingkungan sosial yang sehat dapat membantu mahasiswa merasa lebih nyaman dan cepat beradaptasi dengan ritme kehidupan kampus.
+      </div>
+      <h3>Pentingnya Kesehatan Mental</h3>
+      <p>Dunia pendidikan Indonesia juga mulai memberikan perhatian serius pada kesehatan psikologis mahasiswa. Tekanan akademik, tuntutan sosial, dan perundungan — baik di dunia nyata maupun digital — dapat berdampak buruk jika tidak ditangani. Kampus harus hadir sebagai ruang aman bagi seluruh mahasiswanya.</p>
+      <div class="modal-refs">
+        <h4>Penulis</h4>
+        <p>Muhammad Hafizh Halim (2503015082) — Peer Review: M. Fajar Hari Ruby</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- A1E2: Smart Campus Transformasi -->
+<div class="article-overlay" id="ov-a1e2">
+  <div class="article-modal">
+    <div class="modal-top">
+      <div class="modal-close"><button class="close-btn" onclick="tutupArtikel('a1e2')">✕ Tutup</button></div>
+      <div class="modal-eyebrow ed2">Artikel Utama · Edisi 02 · Kelompok 3</div>
+      <h2 class="modal-title">Smart Campus sebagai Transformasi Digital dalam Pelayanan Mahasiswa</h2>
+    </div>
+    <div class="modal-body">
+      <h3>Pendahuluan</h3>
+      <p>Perkembangan teknologi digital telah membawa perubahan besar dalam dunia pendidikan tinggi. Perguruan tinggi saat ini tidak hanya berfungsi sebagai tempat belajar, tetapi juga sebagai pusat inovasi yang dituntut mampu memberikan pelayanan cepat, efektif, dan efisien. Dalam menghadapi tantangan era digital, konsep Smart Campus hadir sebagai solusi modern.</p>
+      <p>Smart Campus merupakan konsep kampus berbasis teknologi yang mengintegrasikan berbagai sistem digital untuk mendukung aktivitas mahasiswa, dosen, dan tenaga kependidikan — memanfaatkan IoT, kecerdasan buatan, aplikasi mobile, hingga cloud computing.</p>
+      <div class="highlight-box ed2">
+        Konsep Smart Campus menjadi sangat relevan di era revolusi industri 4.0 karena mahasiswa saat ini hidup berdampingan dengan teknologi digital dan menginginkan pelayanan yang dapat diakses kapan saja melalui smartphone atau laptop.
+      </div>
+      <h3>Implementasi Nyata di Kampus</h3>
+      <p>Menurut Handoko dan Prasetyo (2021), penerapan Smart Campus mampu meningkatkan efisiensi pelayanan akademik melalui integrasi sistem digital. Mahasiswa dapat mengakses jadwal kuliah, melihat nilai, mengisi KRS, hingga melakukan pembayaran kuliah secara online — tanpa perlu datang langsung ke administrasi.</p>
+      <p>Teknologi IoT juga menjadi bagian penting: absensi digital berbasis sidik jari, sensor otomatis untuk pencahayaan dan pendingin ruangan, serta CCTV pintar untuk keamanan kampus. Sari (2022) menjelaskan bahwa chatbot akademik berbasis AI dapat memberikan informasi secara otomatis selama 24 jam.</p>
+      <h3>Tantangan yang Dihadapi</h3>
+      <p>Meskipun manfaatnya besar, implementasi Smart Campus menghadapi tantangan: biaya infrastruktur yang tinggi, kesiapan sumber daya manusia yang beragam, serta risiko keamanan siber yang harus ditangani dengan serius melalui sistem proteksi data yang kuat.</p>
+      <div class="modal-refs">
+        <h4>Referensi</h4>
+        <p>Handoko, T., & Prasetyo, R. (2021). Implementasi smart campus. Jurnal Sistem Informasi dan Teknologi, 8(1), 23–31.</p>
+        <p>Nugroho, S., & Wijaya, M. (2023). Pemanfaatan IoT pada smart campus. Jurnal Teknologi Informasi, 10(1), 60–72.</p>
+        <p>Sari, N. (2022). Peran AI dalam pengembangan smart campus. Jurnal Informatika dan Pendidikan, 14(1), 34–42.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- A2E2: Pengalaman Belajar Modern -->
+<div class="article-overlay" id="ov-a2e2">
+  <div class="article-modal">
+    <div class="modal-top">
+      <div class="modal-close"><button class="close-btn" onclick="tutupArtikel('a2e2')">✕ Tutup</button></div>
+      <div class="modal-eyebrow ed2">Artikel Utama · Edisi 02 · Kelompok 3</div>
+      <h2 class="modal-title">Peran Smart Campus dalam Menciptakan Pengalaman Belajar Modern bagi Mahasiswa</h2>
+    </div>
+    <div class="modal-body">
+      <h3>Pendahuluan</h3>
+      <p>Perubahan gaya hidup akibat perkembangan teknologi digital memengaruhi hampir seluruh aspek kehidupan, termasuk pendidikan tinggi. Mahasiswa modern menginginkan sistem pembelajaran dan pelayanan kampus yang praktis, cepat, serta dapat diakses kapan saja. Smart Campus hadir sebagai jawaban atas kebutuhan tersebut.</p>
+      <div class="highlight-box ed2">
+        Ariyanti (2022) menjelaskan bahwa penggunaan Learning Management System memberikan pengalaman belajar yang lebih fleksibel dan interaktif — memungkinkan mahasiswa mengakses materi kapan saja dan di mana saja.
+      </div>
+      <h3>Data Akademik untuk Layanan Personal</h3>
+      <p>Konsep Smart Campus juga mendorong penggunaan teknologi berbasis data. Handoko dan Prasetyo (2021) menyatakan bahwa integrasi data akademik membantu kampus meningkatkan kualitas layanan yang lebih personal — seperti rekomendasi mata kuliah atau pendeteksian mahasiswa yang membutuhkan bimbingan tambahan.</p>
+      <h3>Kampus Ramah Lingkungan</h3>
+      <p>Selain itu, Smart Campus mendukung terciptanya lingkungan kampus yang lebih hijau. Penggunaan dokumen digital mengurangi penggunaan kertas secara signifikan. Sistem pencahayaan dan pendingin ruangan otomatis juga membantu menghemat energi listrik — sejalan dengan visi kampus berkelanjutan.</p>
+      <h3>Tantangan Implementasi</h3>
+      <p>Kesenjangan teknologi menjadi tantangan terbesar: tidak semua mahasiswa memiliki perangkat atau akses internet yang memadai. Kampus perlu memastikan pemerataan manfaat teknologi. Perlindungan privasi data dan adaptasi budaya kerja dari sistem manual ke digital juga menjadi perhatian penting.</p>
+      <div class="modal-refs">
+        <h4>Referensi</h4>
+        <p>Ariyanti, D. (2022). Transformasi digital dalam pendidikan tinggi. Jurnal Pendidikan Teknologi, 15(2), 45–56.</p>
+        <p>Handoko, T., & Prasetyo, R. (2021). Implementasi smart campus. Jurnal Sistem Informasi dan Teknologi, 8(1), 23–31.</p>
+        <p>Rahman, F. (2021). Digitalisasi pelayanan mahasiswa. Jurnal Administrasi Pendidikan, 9(2), 101–110.</p>
+        <p>Kurniawan, A. (2020). Smart campus dan tantangan pendidikan modern. Jurnal Ilmu Pendidikan, 12(3), 88–97.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Progress bar */
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / total) * 100;
+  document.getElementById('pbar').style.width = pct + '%';
+});
+
+/* Dark mode */
+let isDark = false;
+function toggleDark() {
+  isDark = !isDark;
+  document.body.classList.toggle('dark', isDark);
+  document.querySelector('.theme-toggle').textContent = isDark ? '☀ Terang' : '☾ Gelap';
+}
+
+/* Mobile menu */
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+/* Article overlay */
+function bukaArtikel(id) {
+  document.getElementById('ov-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function tutupArtikel(id) {
+  document.getElementById('ov-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* Close on overlay click */
+document.querySelectorAll('.article-overlay').forEach(ov => {
+  ov.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+/* ESC key close */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.article-overlay.open').forEach(ov => {
+      ov.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>
