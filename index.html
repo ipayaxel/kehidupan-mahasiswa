@@ -846,7 +846,7 @@ body.dark {
     <li><a href="#edisi-1">Edisi 1</a></li>
     <li><a href="#edisi-2">Edisi 2</a></li>
     <li><a href="#feature">Feature</a></li>
-    <li><a href="#opini">Opini</a></li>
+    <li><a href="#opini-ed1">Opini</a></li>
     <li><a href="#redaksi">Redaksi</a></li>
   </ul>
   <div class="nav-right">
@@ -859,7 +859,7 @@ body.dark {
   <a href="#edisi-1" onclick="toggleMenu()">Edisi 1 — Survival Guide</a>
   <a href="#edisi-2" onclick="toggleMenu()">Edisi 2 — Smart Campus</a>
   <a href="#feature" onclick="toggleMenu()">Feature</a>
-  <a href="#opini" onclick="toggleMenu()">Opini</a>
+  <a href="#opini-ed1" onclick="toggleMenu()">Opini</a>
   <a href="#redaksi" onclick="toggleMenu()">Redaksi</a>
 </div>
 
@@ -963,6 +963,28 @@ body.dark {
         <button class="read-btn ed2" onclick="bukaArtikel('a2e2')">Baca Artikel →</button>
       </div>
     </div>
+
+    <!-- Artikel 3 Edisi 2 — Teknologi -->
+    <div class="article-card">
+      <div class="article-card-accent" style="background: #7C3AED;"></div>
+      <div class="article-card-body">
+        <div class="article-type" style="color: #7C3AED;">Artikel Teknologi · Transformasi Masa Depan</div>
+        <h3 class="article-title">Smart Campus: Transformasi Teknologi untuk Kampus Masa Depan</h3>
+        <p class="article-lead">IoT, Kecerdasan Buatan, e-learning, dan sistem informasi akademik terpadu — inilah empat pilar teknologi yang menjadikan kampus lebih cerdas, efisien, dan terhubung. Pelajari manfaat, tantangan, dan masa depan Smart Campus di Indonesia.</p>
+        <button class="read-btn" style="background: #7C3AED; color: #fff;" onmouseover="this.style.background='#5B21B6'" onmouseout="this.style.background='#7C3AED'" onclick="bukaArtikel('a3e2')">Baca Artikel →</button>
+      </div>
+    </div>
+
+    <!-- Artikel 4 Edisi 2 — AI & Smart Campus -->
+    <div class="article-card">
+      <div class="article-card-accent" style="background: #D97706;"></div>
+      <div class="article-card-body">
+        <div class="article-type" style="color: #D97706;">Artikel Teknologi · Kecerdasan Buatan</div>
+        <h3 class="article-title">Smart Campus dan Kecerdasan Buatan: Inovasi Teknologi dalam Pendidikan Tinggi</h3>
+        <p class="article-lead">Chatbot akademik 24 jam, analisis data mahasiswa berbasis AI, dan pembelajaran personal — inilah wajah baru kampus cerdas yang memanfaatkan kecerdasan buatan untuk layanan lebih responsif dan berkualitas.</p>
+        <button class="read-btn" style="background: #D97706; color: #fff;" onmouseover="this.style.background='#B45309'" onmouseout="this.style.background='#D97706'" onclick="bukaArtikel('a4e2')">Baca Artikel →</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1015,6 +1037,25 @@ body.dark {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINI EDISI 1 -->
+<section class="opini-section" id="opini-ed1" style="background: var(--ink); padding: 80px 0;">
+  <div class="opini-inner" style="max-width: 900px; margin: 0 auto; padding: 0 32px;">
+    <div class="opini-header" style="display: flex; align-items: center; gap: 16px; margin-bottom: 40px;">
+      <div class="opini-label" style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light);">Rubrik Opini · Edisi 01</div>
+      <div style="display: inline-flex; align-items: center; gap: 8px; border-radius: 4px; padding: 4px 12px; background: var(--ed1-accent); font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; font-weight: 500;">📘 Survival Guide</div>
+      <div class="opini-rule" style="flex: 1; height: 1px; background: rgba(255,255,255,0.1);"></div>
+    </div>
+    <p class="opini-quote" style="font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.25; margin-bottom: 28px; color: #fff;">Kuliah bukan sekadar mencari gelar, tetapi juga <em style="font-style: normal; color: var(--ed1-accent);">membangun karakter</em> dan masa depan.</p>
+    <div style="font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,247,242,0.4); margin-bottom: 28px;">Tim Redaksi · KAMPUS KITA</div>
+    <div class="opini-body">
+      <p>Menjadi mahasiswa bukan hanya tentang hadir di kelas, mengerjakan tugas, dan mengejar nilai tinggi. Dunia perkuliahan menawarkan kesempatan yang jauh lebih luas untuk mengembangkan diri, mulai dari mengikuti organisasi, kegiatan sosial, hingga membangun relasi dengan berbagai kalangan. Sayangnya, masih banyak mahasiswa yang memandang kuliah hanya sebagai rutinitas akademik semata.</p>
+      <p>Mahasiswa yang aktif memiliki peluang lebih besar untuk berkembang dibandingkan mereka yang hanya berfokus pada kegiatan di dalam kelas. Keaktifan dalam organisasi, kepanitiaan, atau komunitas dapat melatih kemampuan komunikasi, kepemimpinan, kerja sama tim, dan manajemen waktu — keterampilan yang sering kali menjadi nilai tambah yang dicari oleh dunia kerja.</p>
+      <p>Namun, keaktifan juga harus dibarengi dengan kemampuan mengatur prioritas. Tidak sedikit mahasiswa yang terlalu sibuk berorganisasi hingga mengabaikan kewajiban akademiknya. Keseimbangan antara prestasi akademik dan pengalaman non-akademik menjadi hal yang sangat penting. Selain itu, mahasiswa perlu memanfaatkan teknologi secara bijak — alat pendukung yang efektif jika digunakan dengan kontrol, namun bisa menjadi sumber distraksi jika tidak.</p>
+      <p>Pada akhirnya, kesuksesan mahasiswa tidak hanya diukur dari IPK, melainkan juga dari kemampuan beradaptasi, berpikir kritis, serta memberikan kontribusi positif bagi lingkungan sekitar. Kampus adalah tempat untuk belajar menjadi pribadi yang siap menghadapi tantangan masa depan. Jadilah mahasiswa yang tidak hanya cerdas secara akademik, tetapi juga aktif, kreatif, dan berintegritas.</p>
     </div>
   </div>
 </section>
@@ -1185,6 +1226,100 @@ body.dark {
         <p>Handoko, T., & Prasetyo, R. (2021). Implementasi smart campus. Jurnal Sistem Informasi dan Teknologi, 8(1), 23–31.</p>
         <p>Rahman, F. (2021). Digitalisasi pelayanan mahasiswa. Jurnal Administrasi Pendidikan, 9(2), 101–110.</p>
         <p>Kurniawan, A. (2020). Smart campus dan tantangan pendidikan modern. Jurnal Ilmu Pendidikan, 12(3), 88–97.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- A3E2: Smart Campus Teknologi Masa Depan -->
+<div class="article-overlay" id="ov-a3e2">  <div class="article-modal">
+    <div class="modal-top">
+      <div class="modal-close"><button class="close-btn" onclick="tutupArtikel('a3e2')">✕ Tutup</button></div>
+      <div class="modal-eyebrow" style="color: #7C3AED;">Artikel Teknologi · Edisi 02 · Kelompok 3</div>
+      <h2 class="modal-title">Smart Campus: Transformasi Teknologi untuk Kampus Masa Depan</h2>
+    </div>
+    <div class="modal-body">
+      <h3>Pendahuluan</h3>
+      <p>Perkembangan teknologi informasi telah mengubah berbagai aspek kehidupan manusia, termasuk dunia pendidikan tinggi. Saat ini, perguruan tinggi tidak hanya berfungsi sebagai tempat belajar, tetapi juga dituntut mampu memberikan pelayanan yang cepat, efektif, dan efisien kepada mahasiswa. Untuk menjawab kebutuhan tersebut, muncul konsep <strong>Smart Campus</strong>, yaitu kampus yang memanfaatkan teknologi digital untuk mengintegrasikan berbagai layanan akademik maupun nonakademik.</p>
+      <p>Smart Campus memanfaatkan berbagai teknologi modern seperti Internet of Things (IoT), Artificial Intelligence (AI), aplikasi mobile, dan cloud computing untuk menciptakan lingkungan kampus yang lebih cerdas dan terhubung. Dengan sistem yang terintegrasi, mahasiswa dapat mengakses berbagai layanan kampus hanya melalui perangkat digital seperti smartphone atau laptop.</p>
+      <div class="highlight-box ed2">
+        Smart Campus bukan sekadar digitalisasi — ini adalah transformasi menyeluruh yang menempatkan teknologi sebagai tulang punggung pelayanan pendidikan tinggi modern.
+      </div>
+
+      <h3>1. Sistem Informasi Akademik Terpadu</h3>
+      <p>Salah satu teknologi utama dalam Smart Campus adalah sistem informasi akademik yang terintegrasi. Melalui sistem ini, mahasiswa dapat melihat jadwal kuliah, mengisi Kartu Rencana Studi (KRS), memeriksa nilai, hingga melakukan pembayaran kuliah secara online. Kehadiran sistem ini mengurangi proses administrasi manual sehingga pelayanan menjadi lebih cepat dan efisien.</p>
+
+      <h3>2. E-Learning dan Learning Management System (LMS)</h3>
+      <p>Teknologi pembelajaran digital memungkinkan mahasiswa mengikuti perkuliahan secara daring, mengakses materi kapan saja, mengumpulkan tugas, serta berinteraksi dengan dosen melalui platform digital. Sistem ini memberikan fleksibilitas belajar yang tinggi dan mendukung proses pembelajaran yang lebih interaktif.</p>
+
+      <h3>3. Internet of Things (IoT)</h3>
+      <p>IoT berperan penting dalam menciptakan kampus yang lebih efisien. Teknologi ini digunakan untuk absensi digital, pengelolaan pencahayaan otomatis, pengaturan pendingin ruangan, hingga monitoring fasilitas kampus secara real-time. Dengan IoT, penggunaan energi dapat dioptimalkan sehingga lebih hemat dan ramah lingkungan.</p>
+
+      <h3>4. Artificial Intelligence (AI)</h3>
+      <p>Kecerdasan buatan mulai digunakan untuk meningkatkan pelayanan mahasiswa. Salah satu penerapannya adalah chatbot akademik yang dapat menjawab pertanyaan mahasiswa selama 24 jam tanpa harus menunggu petugas administrasi. AI membantu mempercepat penyampaian informasi dan meningkatkan kualitas layanan kampus.</p>
+
+      <h3>Manfaat Smart Campus</h3>
+      <p>Penerapan Smart Campus memberikan berbagai manfaat nyata bagi civitas akademika, antara lain: mempermudah akses layanan akademik dan administrasi; meningkatkan efisiensi proses pembelajaran; mempercepat penyampaian informasi kepada mahasiswa; meningkatkan keamanan kampus melalui CCTV pintar dan sistem akses digital; mengurangi penggunaan kertas dan konsumsi energi; serta meningkatkan kenyamanan mahasiswa dalam menjalani aktivitas perkuliahan.</p>
+
+      <h3>Tantangan Implementasi Smart Campus</h3>
+      <p>Meskipun menawarkan banyak keuntungan, penerapan Smart Campus masih menghadapi beberapa tantangan. Biaya implementasi teknologi yang cukup besar menjadi kendala bagi sebagian perguruan tinggi. Selain itu, kesiapan sumber daya manusia dan kemampuan literasi digital juga memengaruhi keberhasilan penerapan sistem ini. Keamanan data menjadi tantangan lain karena sistem digital rentan terhadap ancaman siber seperti peretasan dan pencurian data.</p>
+      <div class="highlight-box ed2">
+        Tantangan terbesar bukan pada teknologinya, melainkan pada kesiapan ekosistem — SDM, infrastruktur, dan budaya organisasi — untuk bertransisi ke era digital secara menyeluruh.
+      </div>
+
+      <h3>Kesimpulan</h3>
+      <p>Smart Campus merupakan inovasi teknologi yang mampu mentransformasi dunia pendidikan tinggi menuju era digital. Dengan memanfaatkan teknologi seperti IoT, AI, sistem informasi akademik, dan e-learning, kampus dapat memberikan pelayanan yang lebih cepat, efisien, dan transparan kepada mahasiswa. Walaupun masih menghadapi berbagai tantangan, Smart Campus menjadi langkah strategis untuk menciptakan lingkungan pendidikan yang modern, inovatif, dan siap menghadapi perkembangan teknologi di masa depan.</p>
+
+      <div class="modal-refs">
+        <h4>Penulis</h4>
+        <p>Kelompok 3 (2B) — Teknik Informatika · Universitas Muhammadiyah Prof. Dr. Hamka · 2025</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- A4E2: Smart Campus & Kecerdasan Buatan -->
+<div class="article-overlay" id="ov-a4e2">
+  <div class="article-modal">
+    <div class="modal-top">
+      <div class="modal-close"><button class="close-btn" onclick="tutupArtikel('a4e2')">✕ Tutup</button></div>
+      <div class="modal-eyebrow" style="color: #D97706;">Artikel Teknologi · Edisi 02 · Kelompok 3</div>
+      <h2 class="modal-title">Smart Campus dan Kecerdasan Buatan: Inovasi Teknologi dalam Pendidikan Tinggi</h2>
+    </div>
+    <div class="modal-body">
+      <h3>Pendahuluan</h3>
+      <p>Perkembangan teknologi digital telah mendorong perubahan besar dalam sistem pendidikan tinggi. Salah satu inovasi yang kini banyak diterapkan oleh perguruan tinggi adalah konsep <strong>Smart Campus</strong>, yaitu kampus yang memanfaatkan teknologi informasi untuk meningkatkan kualitas layanan akademik dan administrasi. Dalam perkembangannya, Smart Campus tidak hanya mengandalkan sistem digital biasa, tetapi juga mulai memanfaatkan teknologi <strong>Artificial Intelligence (AI)</strong> atau kecerdasan buatan untuk memberikan pelayanan yang lebih cepat, cerdas, dan efisien.</p>
+      <p>Teknologi AI menjadi bagian penting dalam transformasi pendidikan karena mampu mengolah data dalam jumlah besar, memberikan rekomendasi secara otomatis, serta membantu proses pengambilan keputusan. Dengan dukungan AI, kampus dapat menciptakan lingkungan belajar yang lebih modern dan sesuai dengan kebutuhan mahasiswa di era digital.</p>
+      <div class="highlight-box" style="border-left-color: #D97706; background: #FFFBEB;">
+        Kecerdasan buatan bukan hanya alat bantu — AI adalah penggerak transformasi yang membuat kampus mampu merespons kebutuhan mahasiswa secara cerdas dan real-time.
+      </div>
+
+      <h3>Peran AI dalam Smart Campus</h3>
+      <p>Salah satu penerapan AI yang paling banyak digunakan di lingkungan Smart Campus adalah <strong>chatbot akademik</strong>. Chatbot merupakan program komputer yang dapat berkomunikasi dengan pengguna secara otomatis melalui pesan teks. Mahasiswa dapat memperoleh informasi mengenai jadwal kuliah, pembayaran UKT, prosedur administrasi, hingga informasi beasiswa tanpa harus datang langsung ke kantor administrasi kampus. Sistem ini mampu memberikan pelayanan selama 24 jam sehingga meningkatkan efisiensi pelayanan mahasiswa.</p>
+      <p>Selain chatbot, AI juga dapat digunakan untuk <strong>menganalisis data akademik mahasiswa</strong>. Sistem dapat memantau perkembangan nilai, tingkat kehadiran, serta aktivitas pembelajaran mahasiswa. Dari data tersebut, kampus dapat mengidentifikasi mahasiswa yang mengalami kesulitan belajar dan memberikan bimbingan lebih awal. Teknologi ini membantu meningkatkan kualitas pendidikan karena setiap mahasiswa mendapatkan perhatian yang lebih sesuai dengan kebutuhannya.</p>
+
+      <h3>Manfaat AI bagi Mahasiswa</h3>
+      <p>Penerapan AI dalam Smart Campus memberikan berbagai manfaat nyata bagi mahasiswa, antara lain:</p>
+      <p><strong>1.</strong> Akses informasi lebih cepat melalui chatbot dan sistem digital.<br>
+      <strong>2.</strong> Pembelajaran lebih personal berdasarkan analisis data akademik.<br>
+      <strong>3.</strong> Efisiensi waktu karena banyak layanan dapat dilakukan secara online.<br>
+      <strong>4.</strong> Kemudahan komunikasi antara mahasiswa dan pihak kampus.<br>
+      <strong>5.</strong> Peningkatan kualitas pembelajaran melalui rekomendasi materi dan layanan akademik yang lebih tepat.</p>
+      <p>Dengan adanya teknologi AI, mahasiswa tidak hanya menjadi pengguna teknologi, tetapi juga merasakan manfaat langsung dari pelayanan yang lebih modern dan responsif.</p>
+
+      <h3>Tantangan Penerapan AI</h3>
+      <p>Meskipun memiliki banyak manfaat, penggunaan AI di lingkungan kampus juga menghadapi beberapa tantangan. Salah satunya adalah kebutuhan infrastruktur teknologi yang memadai, seperti jaringan internet yang stabil dan server dengan kapasitas besar. Selain itu, <strong>keamanan data</strong> menjadi perhatian utama karena sistem AI memproses banyak informasi pribadi mahasiswa. Oleh sebab itu, kampus harus memiliki sistem keamanan siber yang kuat untuk melindungi data dari ancaman peretasan dan penyalahgunaan.</p>
+      <p>Tantangan lainnya adalah <strong>kesiapan sumber daya manusia</strong>. Dosen, tenaga administrasi, dan mahasiswa perlu memiliki kemampuan literasi digital agar dapat memanfaatkan teknologi AI secara optimal. Pelatihan dan sosialisasi menjadi langkah penting dalam mendukung keberhasilan implementasi teknologi ini.</p>
+      <div class="highlight-box" style="border-left-color: #D97706; background: #FFFBEB;">
+        Keberhasilan AI di kampus tidak ditentukan semata oleh kecanggihan algoritmanya, melainkan oleh kesiapan manusia di baliknya — dosen, staf, dan mahasiswa yang melek digital.
+      </div>
+
+      <h3>Kesimpulan</h3>
+      <p>Kecerdasan buatan merupakan teknologi yang memiliki peran penting dalam pengembangan Smart Campus. Melalui chatbot, analisis data akademik, dan berbagai sistem otomatis lainnya, AI mampu meningkatkan kualitas pelayanan serta pengalaman belajar mahasiswa. Meskipun masih menghadapi tantangan dalam aspek biaya, keamanan data, dan kesiapan sumber daya manusia, penerapan AI tetap menjadi langkah strategis untuk menciptakan kampus yang modern, inovatif, dan siap menghadapi perkembangan teknologi masa depan. Dengan pemanfaatan yang tepat, AI dapat menjadi fondasi utama dalam mewujudkan pendidikan tinggi yang lebih efektif dan berkualitas.</p>
+
+      <div class="modal-refs">
+        <h4>Penulis</h4>
+        <p>Kelompok 3 (2B) — Teknik Informatika · Universitas Muhammadiyah Prof. Dr. Hamka · 2025</p>
       </div>
     </div>
   </div>
